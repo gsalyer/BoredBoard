@@ -11,7 +11,7 @@
   <body>
     <!--Header -->
     <header>
-      <h1>App</h1>
+      <h1>A Website</h1>
     </header>
     <nav>
       <a href="./index.html">Home</a>
@@ -22,7 +22,28 @@
     </nav>
     <h2>Sign up</h2>
     <main>
-
+      <form action="">
+        <label for="username">Enter a username:</label>
+        <input type="text" id="username" />
+        <label for="password">Enter a password:</label>
+        <input type="password" id="password" />
+        <label for="confirmpassword">Confirm password:</label>
+        <input type="password" id="confirmpassword" />
+        <div>
+          <label for="over13">I am at least 13 years old</label>
+          <input type="checkbox" name="over13" id="over13" />
+          <div>
+            <label for="tos"
+              >Accept our
+              <a href="">TOS and Privacy Rules</a>
+            </label>
+            <input type="checkbox" name="tos" id="tos" />
+            <div>
+              <button type="submit">Submit</button>
+            </div>
+          </div>
+        </div>
+      </form>
     </main>
     <footer>Footer &copy2022</footer>
   </body>

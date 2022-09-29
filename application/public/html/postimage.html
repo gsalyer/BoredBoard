@@ -6,7 +6,7 @@
     <title>Post Image</title>
     <meta name="description" content="Desription" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
   </head>
   <body>
     <!--Header -->
@@ -14,29 +14,39 @@
       <h1>A Website</h1>
     </header>
     <nav>
-      <a href="./index.html">Home</a>
-      <a href="./login.html">Log in</a>
-      <a href="./Registration.html">Sign up</a>
-      <a href="./postimage.html">Create New Post</a>
-      <a href="./viewpost.html">View Posts</a>
+      <cite>
+        <a href="./index.html">Home</a>
+      </cite>
+      <cite>
+        <a href="./login.html">Log in</a>
+      </cite>
+      <cite>
+        <a href="./Registration.html">Sign up</a>
+      </cite>
+      <cite>
+        <a href="./postimage.html"><mark>Create New Post</mark></a>
+      </cite>
+      <cite>
+        <a href="./viewpost.html">View Posts</a>
+      </cite>
     </nav>
     <h2>Post Image</h2>
     <main>
       <form action="">
-        <label for="Title">Post title:</label><br />
+        <label for="Title">Title</label><br />
         <input type="text" id="title" name="title" /><br />
-        <label for="desc">Description:</label><br />
+        <label for="desc">Description</label><br />
         <textarea name="desc" id="desc" cols="50" rows="7"></textarea><br />
         <input type="file" name="image" id="image" /><br />
         <input type="checkbox" name="userpolicy" id="userpolicy" />
-        <label for="userpolicy"
-          >Accept the
+        <label for="userpolicy">
+          Accept the
           <a href="http://" target="_blank" rel="noopener noreferrer">
             Acceptable Use Policy
           </a>
-          <br />
-          <button type="submit">Submit</button>
         </label>
+        <br />
+        <button type="submit">Submit</button>
       </form>
     </main>
     <footer>Footer &copy2022</footer>

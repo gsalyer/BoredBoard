@@ -6,7 +6,7 @@
     <title>Registration</title>
     <meta name="description" content="Desription" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
   </head>
   <body>
     <!--Header -->
@@ -14,37 +14,42 @@
       <h1>A Website</h1>
     </header>
     <nav>
-      <a href="./index.html">Home</a>
-      <a href="./login.html">Log in</a>
-      <a href="./Registration.html">Sign up</a>
-      <a href="./postimage.html">Create New Post</a>
-      <a href="./viewpost.html">View Posts</a>
+      <cite>
+        <a href="./index.html">Home</a>
+      </cite>
+      <cite>
+        <a href="./login.html">Log in</a>
+      </cite>
+      <cite>
+        <a href="./Registration.html"><mark>Sign up</mark></a>
+      </cite>
+      <cite>
+        <a href="./postimage.html">Create New Post</a>
+      </cite>
+      <cite>
+        <a href="./viewpost.html">View Posts</a>
+      </cite>
     </nav>
     <h2>Sign up</h2>
     <main>
       <form action="">
-        <label for="username">Enter a username:</label>
-        <input type="text" id="username" />
-        <label for="password">Enter a password:</label>
-        <input type="password" id="password" />
-        <label for="confirmpassword">Confirm password:</label>
-        <input type="password" id="confirmpassword" />
-        <div>
-          <input type="checkbox" name="over13" id="over13" />
-          <label for="over13">I am at least 13 years old</label>
-          <div>
-            <input type="checkbox" name="tos" id="tos" />
-            <label for="tos">
-              Accept our
-              <a href="http://" target="_blank" rel="noopener noreferrer">
-                TOS and Privacy Rules
-              </a>
-            </label>
-            <div>
-              <button type="submit">Submit</button>
-            </div>
-          </div>
-        </div>
+        <label for="username">Username</label> <br>
+        <input type="text" id="username" /> <br />
+        <label for="password">Password</label> <br>
+        <input type="password" id="password" /> <br />
+        <label for="confirmpassword">Confirm</label> <br>
+        <input type="password" id="confirmpassword" /> <br />
+        <input type="checkbox" name="over13" id="over13" />
+        <label for="over13">I am at least 13 years old</label> <br />
+        <input type="checkbox" name="tos" id="tos" />
+        <label for="tos">
+          Accept our
+          <a href="http://" target="_blank" rel="noopener noreferrer">
+            TOS and Privacy Rules
+          </a>
+        </label>
+        <br />
+        <button type="submit">Submit</button>
       </form>
     </main>
     <footer>Footer &copy2022</footer>

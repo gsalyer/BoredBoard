@@ -13,23 +13,29 @@
     <header>
       <h1>A Website</h1>
     </header>
-    <nav>
-      <a href="./index.html">Home</a>
-      <a href="./login.html"><mark>Log in</mark></a>
-      <a href="./Registration.html">Sign up</a>
-      <a href="./postimage.html">New Post</a>
-      <a href="./viewpost.html">View Posts</a>
-    </nav>
-    <h2>Log in</h2>
-    <main>
-      <form action="">
-        <label for="username">Username</label>
-        <input type="text" id="username" />
-        <label for="password">Password</label>
-        <input type="password" id="password" />
-        <button type="submit">Submit</button>
-      </form>
-    </main>
+    <div id="nav-menu" class="nav-menu-container">
+      <div class="nav-menu">
+        <a href="./index.html" class="nav-button index">HOME</a>
+        <a href="./login.html" class="nav-button login on">LOG IN</a>
+        <a href="./Registration.html" class="nav-button registration">
+          SIGN UP
+        </a>
+        <a href="./postimage.html" class="nav-button postimage">NEW POST</a>
+        <a href="./viewpost.html" class="nav-button viewpost">VIEW POSTS</a>
+      </div>
+    </div>
+    <div class="main-container">
+      <h2>Log in</h2>
+      <main>
+        <form action="">
+          <label for="username">Username</label>
+          <input type="text" id="username" />
+          <label for="password">Password</label>
+          <input type="password" id="password" />
+          <button type="submit">Submit</button>
+        </form>
+      </main>
+    </div>
     <footer>Footer &copy2022</footer>
   </body>
 </html>

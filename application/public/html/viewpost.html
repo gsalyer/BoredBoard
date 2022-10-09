@@ -13,25 +13,31 @@
     <header>
       <h1>A Website</h1>
     </header>
-    <nav>
-      <a href="./index.html">Home</a>
-      <a href="./login.html">Log in</a>
-      <a href="./Registration.html">Sign up</a>
-      <a href="./postimage.html">New Post</a>
-      <a href="./viewpost.html"><mark>View Posts</mark></a>
-    </nav>
-    <h2>View Posts</h2>
-    <main>
-      <section>
-        <p>title</p>
-        <p>desc</p>
-        <p>author</p>
-        <p>date posted</p>
-        <img
-          src="https://fakeimg.pl/200x100/282828/eae0d0/?retina=1"
-          alt="Fake image not found :(" />
-      </section>
-    </main>
+    <div id="nav-menu" class="nav-menu-container">
+      <div class="nav-menu">
+        <a href="./index.html" class="nav-button index">HOME</a>
+        <a href="./login.html" class="nav-button login">LOG IN</a>
+        <a href="./Registration.html" class="nav-button registration">
+          SIGN UP
+        </a>
+        <a href="./postimage.html" class="nav-button postimage">NEW POST</a>
+        <a href="./viewpost.html" class="nav-button viewpost on">VIEW POSTS</a>
+      </div>
+    </div>
+    <div class="main-container">
+      <h2>View Posts</h2>
+      <main>
+        <section>
+          <p>title</p>
+          <p>desc</p>
+          <p>author</p>
+          <p>date posted</p>
+          <img
+            src="https://fakeimg.pl/200x100/282828/eae0d0/?retina=1"
+            alt="Fake image not found :(" />
+        </section>
+      </main>
+    </div>
     <footer>Footer &copy2022</footer>
   </body>
 </html>

@@ -62,6 +62,10 @@ h6 {
   font-weight: lighter;
   letter-spacing: 0.1rem;
 }
+footer {
+  position: fixed;
+  bottom: 0;
+}
 blockquote {
   position: relative;
   padding: 0.5rem;
@@ -310,4 +314,128 @@ figure > figcaption {
 }
 iframe {
   border: 0.1rem solid #bab5a1;
+}
+
+/* Nav */
+#nav-menu,
+#nav-menu .fixed {
+  background-color: transparent;
+  display: block;
+  position: fixed;
+  left: 0px;
+  top: 75px;
+  height: auto;
+  width: 100%;
+  border: none;
+}
+
+.nav-menu-container .nav-menu {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 35px 0px 125px;
+  height: 70px;
+}
+
+#nav-menu::before {
+  content: "";
+  display: block;
+  background: center;
+  background-image: url(https://i.imgur.com/xeTob40.png);
+  background-repeat: repeat-y;
+  position: absolute;
+  top: 25px;
+  left: 60px;
+  height: 50px;
+  width: 30px;
+}
+
+#nav-menu::after {
+  content: "";
+  display: block;
+  height: 30px;
+  width: 100%;
+  background-image: url(https://i.imgur.com/9JGP4h7.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#nav-menu .nav-button {
+  /* All nav buttons */
+  background: linear-gradient(to right, #b3ac98, #aea993);
+  color: #4d4940;
+  display: table-cell;
+  position: static;
+  width: 14%;
+  height: 50px;
+  line-height: 50px;
+  padding: 0px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 15pt;
+  letter-spacing: 3.5px;
+  text-indent: 0px;
+  border-radius: 3px 3px 3px 3px;
+  overflow: hidden;
+  white-space: nowrap;
+  box-shadow: 0px 0px 6px #aea993;
+  user-select: none;
+}
+
+#nav-menu .nav-button.on {
+  transition: background 0.2s, color 0.2s, height 0.2s;
+  background: #5f5a4a;
+  color: #d1cbb3;
+  height: 70px;
+  font-weight: normal;
+  border-radius: 3px 3px 0px 0px;
+  box-shadow: 0px 0px 6px #5f5a4a;
+}
+
+#nav-menu .nav-button:hover {
+  transition: background 0.2s, color 0.2s, height 0.2s, box-shadow 0.2s;
+  background: #5f5a4a;
+  color: #d1cbb3;
+  box-shadow: 0px 0px 6px #5f5a4a;
+}
+
+#nav-menu .nav-button.on::after {
+  content: "";
+  display: block;
+  background: center;
+  background-color: transparent;
+  background-image: url(https://i.imgur.com/lsEiej1.png);
+  background-repeat: no-repeat;
+  height: 50px;
+  width: 42px;
+  position: absolute;
+  top: 25px;
+  pointer-events: none;
+}
+
+#nav-menu .nav-button::after {
+  display: none;
+}
+
+#nav-menu .nav-button.on.index::after {
+  left: calc(75px + (100% - 160px) * 0.172 * 0);
+}
+
+#nav-menu .nav-button.on.login::after {
+  left: calc(75px + (100% - 160px) * 0.172 * 1);
+}
+
+#nav-menu .nav-button.on.registration::after {
+  left: calc(75px + (100% - 160px) * 0.172 * 2);
+}
+
+#nav-menu .nav-button.on.postimage::after {
+  left: calc(75px + (100% - 160px) * 0.172 * 3);
+}
+
+#nav-menu .nav-button.on.viewpost::after {
+  left: calc(75px + (100% - 160px) * 0.172 * 4);
+}
+
+.main-container {
+  margin-top: 125px;
 }

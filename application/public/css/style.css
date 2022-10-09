@@ -398,7 +398,8 @@ iframe {
   box-shadow: 0px 0px 6px #5f5a4a;
 }
 
-#nav-menu .nav-button.on::after {
+/* BAD CALC, FIX LATER */
+/* #nav-menu .nav-button.on::after {
   content: "";
   display: block;
   background: center;
@@ -434,7 +435,7 @@ iframe {
 
 #nav-menu .nav-button.on.viewpost::after {
   left: calc(75px + (100% - 160px) * 0.172 * 4);
-}
+} */
 
 .main-container {
   margin-top: 125px;

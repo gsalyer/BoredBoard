@@ -460,13 +460,13 @@ iframe {
   outline: 1px solid green !important;
 }
 
-/* Display 3 to 5 images per row */
+/* Display minimum 3 images per row using flexbox*/
 #img-list {
   display: grid;
   width: 70%;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1rem;
-  margin: 1rem;
+  margin-left: 15%;
 }
 
 /* fade out images */

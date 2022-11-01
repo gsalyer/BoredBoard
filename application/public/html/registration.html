@@ -30,9 +30,21 @@
       <main>
         <form action="">
           <label for="username">Username</label> <br />
-          <input type="text" id="username" /> <br />
+          <input type="text" id="username" />
+          <ul>
+            <li>At least 3 characters</li>
+            <li>Starts with a letter</li>
+            <li>Contains only letters and numbers</li>
+          </ul>
           <label for="password">Password</label> <br />
-          <input type="password" id="password" /> <br />
+          <input type="password" id="password" />
+          <ul>
+            <li>At least 8 characters</li>
+            <li>Contains at least one number</li>
+            <li>Contains at least one uppercase letter</li>
+            <li>Contains at least one lowercase letter</li>
+            <li>Contains at least one special character: / * - + ! @ # $ ^ & ~ [ ]</li>
+          </ul>
           <label for="confirmpassword">Confirm</label> <br />
           <input type="password" id="confirmpassword" /> <br />
           <input type="checkbox" name="over13" id="over13" />
@@ -45,7 +57,7 @@
             </a>
           </label>
           <br />
-          <button type="submit">Submit</button>
+          <button type="submit" id="regsubmit">Submit</button>
         </form>
       </main>
     </div>

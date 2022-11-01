@@ -447,6 +447,14 @@ iframe {
   left: calc(75px + (100% - 160px) * 0.172 * 4);
 } */
 
+/* Spacing from top of page */
 .main-container {
   margin-top: 125px;
+}
+
+.invalid-text {
+  outline: 1px solid red !important;
+}
+.valid-text {
+  outline: 1px solid green !important;
 }

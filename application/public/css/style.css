@@ -63,7 +63,7 @@ h6 {
   letter-spacing: 0.1rem;
 }
 footer {
-  position: fixed;
+  position: static;
   bottom: 0;
   width: 100%;
 }
@@ -331,7 +331,7 @@ iframe {
 #nav-menu .fixed {
   background-color: transparent;
   display: block;
-  position: fixed;
+  position: static;
   left: 0px;
   top: 75px;
   height: auto;
@@ -353,7 +353,7 @@ iframe {
   background-image: url(https://i.imgur.com/xeTob40.png);
   background-repeat: repeat-y;
   position: absolute;
-  top: 25px;
+  top: 110;
   left: 60px;
   height: 50px;
   width: 30px;

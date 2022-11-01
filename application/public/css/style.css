@@ -449,9 +449,10 @@ iframe {
 
 /* Spacing from top of page */
 .main-container {
-  margin-top: 125px;
+  margin-top: 0px;
 }
 
+/* Registration valid/invalid */
 .invalid-text {
   outline: 1px solid red !important;
 }
@@ -459,10 +460,17 @@ iframe {
   outline: 1px solid green !important;
 }
 
-/* Display between a minimum of 3 images per column */
+/* Display 3 to 5 images per row */
 #img-list {
   display: grid;
+  width: 70%;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 1rem;
+  gap: 1rem;
   margin: 1rem;
+}
+
+/* fade out images */
+.fade-out {
+  opacity: 0.0;
+  transition: opacity 0.5s ease-in-out;
 }

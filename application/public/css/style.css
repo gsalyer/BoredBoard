@@ -450,6 +450,8 @@ iframe {
 /* Spacing from top of page */
 .main-container {
   margin-top: 0px;
+  min-height: 67.5vh;
+  padding-bottom: 1%;
 }
 
 /* Registration valid/invalid */

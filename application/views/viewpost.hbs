@@ -3,34 +3,41 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Home</title>
+    <title>View Post</title>
     <meta name="description" content="Desription" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <script defer type="text/javascript" src="../js/fetch.js"></script>
   </head>
   <body>
+    <!--Header -->
     <header>
       <h1>A Website</h1>
     </header>
     <div id="nav-menu" class="nav-menu-container">
       <div class="nav-menu">
-        <a href="./index.html" class="nav-button index on">HOME</a>
+        <a href="./index.html" class="nav-button index">HOME</a>
         <a href="./login.html" class="nav-button login">LOG IN</a>
         <a href="./registration.html" class="nav-button registration">
           SIGN UP
         </a>
         <a href="./postimage.html" class="nav-button postimage">NEW POST</a>
-        <a href="./viewpost.html" class="nav-button viewpost">VIEW POSTS</a>
+        <a href="./viewpost.html" class="nav-button viewpost on">VIEW POSTS</a>
       </div>
     </div>
     <div class="main-container">
-      <h2>Home</h2>
+      <h2>View Posts</h2>
       <main>
-        <h3>Main page content</h3>
-        <div id="img-list"></div>
-        <div id="img-count"></div>
+        <section>
+          <p>title</p>
+          <p>desc</p>
+          <p>author</p>
+          <p>date posted</p>
+          <img
+            src="https://fakeimg.pl/200x100/282828/eae0d0/?retina=1"
+            alt="Fake image not found :(" />
+        </section>
       </main>
     </div>
+    <footer>Footer &copy2022</footer>
   </body>
 </html>

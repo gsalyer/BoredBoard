@@ -1,12 +1,44 @@
-<!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{{title}}</title>
-    <link rel="icon" href="/public/favicon.ico" sizes="70x70" type="image/ico">
-    <link rel='stylesheet' href='/public/css/style.css' />
+    <meta name="description" content="Desription" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      href="/public/favicon.ico"
+      sizes="70x70"
+      type="image/ico"
+    />
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <script defer>
+      //add class "on" to anchor tag that matches the current page
+      //remove class "on" from anchor tag that does not match the current page
+      window.onload = function() {
+        var currentURL = window.location.href;
+        var links = document.getElementById("nav-menu").getElementsByTagName("a");
+        for (var i = 0; i < links.length; i++) {
+          if (links[i].href === currentURL) {
+            links[i].classList.add("on");
+          } else {
+            links[i].classList.remove("on");
+          }
+        }
+      } 
+    </script>
+    {{#if js}}
+      {{#each js}}
+        <script defer src="/public/js/{{this}}"></script>
+      {{/each}}
+    {{/if}}
   </head>
   <body>
+    {{> header}}
+    {{> nav}}
+    <div class="main-container">
     {{{body}}}
+    </div>
     {{> footer}}
   </body>
 </html>

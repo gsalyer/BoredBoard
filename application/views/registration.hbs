@@ -1,66 +1,43 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Registration</title>
-    <meta name="description" content="Desription" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <script defer type="text/javascript" src="../js/validation.js"></script>
-  </head>
   <body>
-    <!--Header -->
-    <header>
-      <h1>A Website</h1>
-    </header>
-    <div id="nav-menu" class="nav-menu-container">
-      <div class="nav-menu">
-        <a href="./index.html" class="nav-button index">HOME</a>
-        <a href="./login.html" class="nav-button login">LOG IN</a>
-        <a href="./registration.html" class="nav-button registration on">
-          SIGN UP
-        </a>
-        <a href="./postimage.html" class="nav-button postimage">NEW POST</a>
-        <a href="./viewpost.html" class="nav-button viewpost">VIEW POSTS</a>
-      </div>
-    </div>
-    <div class="main-container">
-      <h2>Sign up</h2>
-      <main>
-        <form action="">
-          <label for="username">Username</label> <br />
-          <input type="text" id="username" />
-          <ul>
-            <li>At least 3 characters</li>
-            <li>Starts with a letter</li>
-            <li>Contains only letters and numbers</li>
-          </ul>
-          <label for="password">Password</label> <br />
-          <input type="password" id="password" />
-          <ul>
-            <li>At least 8 characters</li>
-            <li>Contains at least one number</li>
-            <li>Contains at least one uppercase letter</li>
-            <li>Contains at least one lowercase letter</li>
-            <li>Contains at least one special character: / * - + ! @ # $ ^ & ~ [ ]</li>
-          </ul>
-          <label for="confirmpassword">Confirm</label> <br />
-          <input type="password" id="confirmpassword" /> <br />
-          <input type="checkbox" name="over13" id="over13" />
-          <label for="over13">I am at least 13 years old</label> <br />
-          <input type="checkbox" name="tos" id="tos" />
-          <label for="tos">
-            Accept our
-            <a href="http://" target="_blank" rel="noopener noreferrer">
-              TOS and Privacy Rules
-            </a>
-          </label>
-          <br />
-          <button type="submit" id="regsubmit">Submit</button>
-        </form>
-      </main>
-    </div>
-    <footer>Footer &copy2022</footer>
+    <h2>Sign up</h2>
+    <main>
+      <form action="">
+        <label for="username">Username</label>
+        <br />
+        <input type="text" id="username" />
+        <ul>
+          <li>At least 3 characters</li>
+          <li>Starts with a letter</li>
+          <li>Contains only letters and numbers</li>
+        </ul>
+        <label for="password">Password</label>
+        <br />
+        <input type="password" id="password" />
+        <ul>
+          <li>At least 8 characters</li>
+          <li>Contains at least one number</li>
+          <li>Contains at least one uppercase letter</li>
+          <li>Contains at least one lowercase letter</li>
+          <li>Contains at least one special character: / * - + ! @ # $ ^ & ~ [ ]</li>
+        </ul>
+        <label for="confirmpassword">Confirm</label>
+        <br />
+        <input type="password" id="confirmpassword" />
+        <br />
+        <input type="checkbox" name="over13" id="over13" />
+        <label for="over13">I am at least 13 years old</label>
+        <br />
+        <input type="checkbox" name="tos" id="tos" />
+        <label for="tos">
+          Accept our
+          <a href="http://" target="_blank" rel="noopener noreferrer">
+            TOS and Privacy Rules
+          </a>
+        </label>
+        <br />
+        <button type="submit" id="regsubmit">Submit</button>
+      </form>
+    </main>
   </body>
 </html>

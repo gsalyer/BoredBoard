@@ -36,9 +36,11 @@
   <body>
     {{> header}}
     {{> nav}}
-    <div class="main-container">
-    {{{body}}}
+    <div class="flex-wrapper">
+      <div class="main-container">
+      {{{body}}}
+      </div>
+      {{> footer}}
     </div>
-    {{> footer}}
   </body>
 </html>

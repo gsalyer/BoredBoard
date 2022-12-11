@@ -5,12 +5,12 @@
  * @returns a string consisting of HTML elements.
  */
 function buildCardsUsingStrings(data) {
-    return `<div class="image-card">
+    return `<span class="img-card">
                 <img class="img-thumb" src="${data.thumbnailUrl}" alt="Fake photo for id: ${data.id}" />
                 <div class="img-info">
                     <p class="img-title">${data.title}</p>
                 </div>
-            </div>`;
+            </span>`;
 }
 var imgCount = 0;
 function fetchImgs() {

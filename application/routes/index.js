@@ -15,7 +15,7 @@ router.get("/login", function (req, res) {
 });
 
 router.get("/register", function (req, res) {
-  res.render('registration', { js: ["validation.js"] });
+  res.render('registration', /*{ js: ["validation.js"] }*/);
 });
 
 router.get("/postimage", function (req, res) {

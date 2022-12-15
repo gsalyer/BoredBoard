@@ -3,14 +3,38 @@
     <h2>View Posts</h2>
     <main>
       <section>
-        <p>title</p>
-        <p>desc</p>
-        <p>author</p>
-        <p>date posted</p>
-        <img
-          src="https://fakeimg.pl/200x100/282828/eae0d0/?retina=1"
-          alt="Fake image not found :("
-        />
+        <p>{{currentPost.title}}</p>
+        <p>{{currentPost.desc}}</p>
+        <p>{{currentPost.username}}</p>
+        <p>{{currentPost.createdAt}}</p>
+        <img src="{{curentPost.image}}" alt="image not found :(" />
+        {{#if isLoggedIn}}
+          <div class="create-comment">
+            <div>
+              <textarea
+                type="text"
+                name="comment"
+                placeholder="Remember, be nice!"
+                id="commentText"
+                class="create-commentTextArea"
+                cols="100"
+                rows="12"
+              ></textarea>
+            </div>
+            <button
+              data-postid="{{currentPost.id}}"
+              id="cb"
+              onclick=""
+            >Submit</button>
+          </div>
+        {{/if}}
+        <div class="comment-section">
+          {{#each currentPost.comments}}
+            <div id="comment-list">
+              {{> comment this}}
+            </div>
+          {{/each}}
+        </div>
       </section>
     </main>
   </body>

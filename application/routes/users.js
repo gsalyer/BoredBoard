@@ -77,7 +77,7 @@ router.post("/login", function (req, res, next) {
       if (passwordsMatched) {
         req.session.userId = loggedUserId;
         req.session.username = loggedUsername;
-        req.flash("success", "You are now logged in.");
+        req.flash("success", `${loggedUsername}, you are now logged in.`);
         req.session.save(function (saveError) {
           res.redirect("/");
         });

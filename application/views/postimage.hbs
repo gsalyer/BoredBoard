@@ -2,12 +2,17 @@
   <body>
     <h2>Post Image</h2>
     <main>
-      <form action="">
+      <form
+        id="post-image"
+        action="/posts/create"
+        method="POST"
+        enctype="multipart/form-data"
+      >
         <label for="Title">Title</label><br />
         <input type="text" id="title" name="title" /><br />
         <label for="desc">Description</label><br />
         <textarea name="desc" id="desc" cols="50" rows="7"></textarea><br />
-        <input type="file" name="image" id="image" /><br />
+        <input type="file" name="uploadImage" id="upload-image" /><br />
         <input type="checkbox" name="userpolicy" id="userpolicy" />
         <label for="userpolicy">
           Accept the

@@ -467,6 +467,11 @@ iframe {
   margin-left: 15%;
 }
 
+.img-card {
+  display: grid;
+  place-items: center;
+}
+
 /* fade out images */
 .fade-out {
   opacity: 0;

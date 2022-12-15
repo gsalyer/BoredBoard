@@ -2,10 +2,14 @@
   <div class="nav-menu">
     <a href="/" class="nav-button">HOME</a>
     <a href="/index" class="nav-button">INDEX</a>
-    <a href="/login" class="nav-button">LOG IN</a>
-    <a href="/register" class="nav-button">
-      SIGN UP
-    </a>
+    {{#if isLoggedIn}}
     <a href="/postimage" class="nav-button">NEW POST</a>
+      <a id="logout-button" class="nav-button">LOG OUT</a>
+    {{else}}
+      <a href="/login" class="nav-button">LOG IN</a>
+      <a href="/register" class="nav-button">
+        SIGN UP
+      </a>
+    {{/if}}
   </div>
 </div>

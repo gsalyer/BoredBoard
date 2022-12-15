@@ -128,6 +128,8 @@ pre {
 fieldset {
   padding: 1rem;
   padding-top: 0.5rem;
+  width: 50%;
+  min-width: 800px;
   border: 0.1rem solid #bab5a1;
 }
 legend {
@@ -390,45 +392,6 @@ iframe {
   top: 17.5px;
 }
 
-/* BAD CALC, FIX LATER */
-/* #nav-menu .nav-button.on::after {
-  content: "";
-  display: block;
-  background: center;
-  background-color: transparent;
-  background-image: url(https://i.imgur.com/lsEiej1.png);
-  background-repeat: no-repeat;
-  height: 50px;
-  width: 42px;
-  position: absolute;
-  top: 25px;
-  pointer-events: none;
-}
-
-#nav-menu .nav-button::after {
-  display: none;
-}
-
-#nav-menu .nav-button.on.index::after {
-  left: calc(75px + (100% - 160px) * 0.172 * 0);
-}
-
-#nav-menu .nav-button.on.login::after {
-  left: calc(75px + (100% - 160px) * 0.172 * 1);
-}
-
-#nav-menu .nav-button.on.registration::after {
-  left: calc(75px + (100% - 160px) * 0.172 * 2);
-}
-
-#nav-menu .nav-button.on.postimage::after {
-  left: calc(75px + (100% - 160px) * 0.172 * 3);
-}
-
-#nav-menu .nav-button.on.viewpost::after {
-  left: calc(75px + (100% - 160px) * 0.172 * 4);
-} */
-
 /* Flex wrapper */
 .flex-wrapper {
   display: flex;
@@ -472,7 +435,6 @@ iframe {
   place-items: center;
 }
 
-
 /* fade out images */
 .fade-out {
   opacity: 0;
@@ -487,4 +449,28 @@ iframe {
 
 .alert-success {
   background-color: #dcd8c0;
+}
+
+/* text box padding */
+.text-input {
+  padding: 10px 0px 10px 0px;
+}
+
+/* stack post info horizontally */
+#post-info {
+  display: flex;
+}
+
+.post-info {
+  float: left;
+}
+
+#post-date {
+  opacity: 40%;
+  padding-left: 10px;
+}
+
+#searchbar {
+  width: 75%;
+  margin-left: 12.5%;
 }

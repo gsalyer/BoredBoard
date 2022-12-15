@@ -1,7 +1,7 @@
 const db = require("../conf/database");
 module.exports = {
   getRecentPosts: function (req, res, next) {
-    db.query("SELECT id, title, description, thumbnail FROM posts LIMIT 8")
+    db.query("SELECT id, title, description, thumbnail FROM posts LIMIT 32")
       .then(function ([results, fields]) {
         if (results && results.length) {
           res.locals.results = results;
@@ -12,10 +12,11 @@ module.exports = {
   },
   getPostById: function (req, res, next) {
     let postId = req.params.id;
-    let baseSQL = `SELECT p.title, p.description, p.image, p.createdAt, u.username
+    let baseSQL = `
+        SELECT p.title, p.description, p.image, p.createdAt, u.username
         FROM posts p
         JOIN users u
-        on fk_authorId=u.id
+        ON fk_authorId=u.id
         WHERE p.id=?;
         `;
     db.query(baseSQL, [postId])
@@ -30,7 +31,8 @@ module.exports = {
   },
   getCommentsForPostsById: function (req, res, next) {
     let postId = req.params.id;
-    let baseSQL = `SELECT c.id, c.text, c.createdAt, u.username
+    let baseSQL = `
+        SELECT c.id, c.text, c.createdAt, u.username
         FROM comments c
         JOIN users u
         on fk_authorId=u.id

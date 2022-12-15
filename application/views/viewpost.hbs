@@ -1,33 +1,42 @@
 <html>
   <body>
-    <h2>View Posts</h2>
     <main>
-      <section>
-        <p>{{currentPost.title}}</p>
-        <p>{{currentPost.desc}}</p>
-        <p>{{currentPost.username}}</p>
-        <p>{{currentPost.createdAt}}</p>
-        <img src="{{curentPost.image}}" alt="image not found :(" />
-        {{#if isLoggedIn}}
-          <div class="create-comment">
-            <div>
-              <textarea
-                type="text"
-                name="comment"
-                placeholder="Remember, be nice!"
-                id="commentText"
-                class="create-commentTextArea"
-                cols="100"
-                rows="12"
-              ></textarea>
-            </div>
-            <button
-              data-postid="{{currentPost.id}}"
-              id="cb"
-              onclick=""
-            >Submit</button>
-          </div>
-        {{/if}}
+      <div id="post-container">
+        <div id="post-content">
+          <h2>{{currentPost.title}}</h2>
+          <img src="/{{currentPost.image}}" alt="image not found :(" />
+          <div id="post-info">
+            <div id="username" class="post-info">{{currentPost.username}}</div>
+            <div id="post-date" class="post-info">{{formatDate currentPost.createdAt}}</div>
+          </div> 
+          <fieldset>
+            {{currentPost.description}}
+          </fieldset>
+          {{#if isLoggedIn}}
+            <form
+              id="post-comment"
+              action="/comments/create"
+              method="POST"
+              enctype="text/plain"
+            >
+              <div class="text-input">
+                <textarea
+                  name="comment"
+                  id="comment-input"
+                  cols="50"
+                  rows="7"
+                  placeholder="Leave a comment"
+                ></textarea>
+              </div>
+              <div id="submit-comment">
+                <button
+                  data-postid="{{currentPost.id}}"
+                  onclick="submit"
+                >Submit</button>
+              </div>
+            </form>
+          {{/if}}
+        </div>
         <div class="comment-section">
           {{#each currentPost.comments}}
             <div id="comment-list">
@@ -35,7 +44,7 @@
             </div>
           {{/each}}
         </div>
-      </section>
+      </div>
     </main>
   </body>
 </html>

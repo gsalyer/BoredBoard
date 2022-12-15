@@ -328,7 +328,7 @@ iframe {
 .nav-menu-container .nav-menu {
   overflow: visible;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   gap: 50px;
 }
 
@@ -471,4 +471,14 @@ iframe {
 .fade-out {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
+}
+
+/* flash message */
+.alert-danger {
+  background-color: #454138;
+  color: #d1cdb7;
+}
+
+.alert-success {
+  background-color: #dcd8c0;
 }

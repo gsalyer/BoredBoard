@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const bcrypt = require("bcrypt");
+const UserError = require("../helpers/error/UserError");
 const db = require("../conf/database");
 
 //POST
@@ -16,14 +17,14 @@ router.post("/register", function (req, res, next) {
       if (results && results.length == 0) {
         return db.query("select id from users where email=?", [email]);
       } else {
-        throw new Error("username already exists");
+        throw new UserError("Username already exists.", "/register", 200);
       }
     })
     .then(function ([results, fields]) {
       if (results && results.length == 0) {
         return bcrypt.hash(password, 2);
       } else {
-        throw new Error("email already exists");
+        throw new UserError("Email already exists.", "/register", 200);
       }
     })
     .then(function (hashedPassword) {
@@ -36,12 +37,18 @@ router.post("/register", function (req, res, next) {
       if (results && results.affectedRows == 1) {
         res.redirect("/login");
       } else {
-        throw new Error("unable to create user");
+        throw new UserError("Unable to create user.", "/register", 200);
       }
     })
     .catch(function (err) {
-      //res.redirect("/register");
-      next(err);
+      if (err instanceof UserError) {
+        req.flash("error", err.getMessage());
+        req.session.save(function (saveError) {
+          res.redirect(err.getRedirectURL());
+        });
+      } else {
+        next(err);
+      }
     });
 
   //insert into db
@@ -63,20 +70,30 @@ router.post("/login", function (req, res, next) {
         let dbPassword = results[0].password;
         return bcrypt.compare(password, dbPassword);
       } else {
-        throw new Error("invalid credentials1");
+        throw new UserError("Failed login: invalid credentials", "/login", 200);
       }
     })
     .then(function (passwordsMatched) {
       if (passwordsMatched) {
         req.session.userId = loggedUserId;
         req.session.username = loggedUsername;
-        res.redirect("/");
+        req.flash("success", "You are now logged in.");
+        req.session.save(function (saveError) {
+          res.redirect("/");
+        });
       } else {
-        throw new Error("invalid credentials2");
+        throw new UserError("Failed login: invalid credentials", "/login", 200);
       }
     })
     .catch(function (err) {
-      next(err);
+      if (err instanceof UserError) {
+        req.flash("error", err.getMessage());
+        req.session.save(function (saveError) {
+          res.redirect(err.getRedirectURL());
+        });
+      } else {
+        next(err);
+      }
     });
 });
 

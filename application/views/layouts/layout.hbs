@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{{title}}</title>
-    <meta name="description" content="Desription" />
+    <meta name="description" content="Description" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="icon"
@@ -32,8 +32,12 @@
         <script defer src="/public/js/{{this}}"></script>
       {{/each}}
     {{/if}}
+    <script defer src="/public/js/flash.js"></script>
   </head>
   <body>
+    {{#if (nonEmptyObject messages)}}
+      {{> flashmessage}}
+    {{/if}}
     {{> header}}
     {{> nav}}
     <div class="flex-wrapper">

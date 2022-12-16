@@ -23,7 +23,6 @@ module.exports = {
       .then(function ([results, fields]) {
         if (results && results.length == 1) {
           res.locals.currentPost = results[0];
-          next();
         }
         next();
       })

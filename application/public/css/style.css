@@ -334,18 +334,19 @@ iframe {
   gap: 50px;
 }
 
+/* Top border */
 #nav-menu::after {
   content: "";
   display: block;
   height: 30px;
   width: 100%;
+  margin-bottom: 10px;
   background-image: url(https://i.imgur.com/9JGP4h7.png);
   background-repeat: repeat-x;
-  /* background-size: cover; */
 }
 
+/* All nav buttons */
 #nav-menu .nav-button {
-  /* All nav buttons */
   background: linear-gradient(to right, #b3ac98, #aea993);
   color: #4d4940;
   display: table-cell;
@@ -475,6 +476,26 @@ iframe {
   margin-left: 12.5%;
 }
 
-#main-search-text{
+#index-searchbar {
+  width: fit-content;
+  float: left;
+  display: block;
+}
+
+.search-text {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.center {
+  position: fixed;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wide{
   width: 100%;
 }

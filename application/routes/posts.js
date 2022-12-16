@@ -29,14 +29,15 @@ router.post("/create", upload.single("uploadImage"), function (req, res, next) {
     });
   } else {
     let uploadedFile = req.file.path;
-    console.log(uploadedFile);
     let thumbnailName = "thumbnail-" + req.file.filename;
     let thumbnailPath = req.file.destination + "/" + thumbnailName;
 
     const { title, description } = req.body;
     const userId = req.session.userId;
     sharp(uploadedFile)
-      .resize(200, 200)
+      .resize(300, 300, {
+        fit: 'inside'
+      })
       .toFile(thumbnailPath)
       .then(function () {
         let baseSQL = `
@@ -72,7 +73,39 @@ router.post("/create", upload.single("uploadImage"), function (req, res, next) {
 
 // local:3000/posts/search
 router.get("/search", function (req, res, next) {
-  
-})
+  let q = `%${req.query.q}%`;
+  let originalSearchTerm = req.query.q;
+  let baseSQL = `
+      SELECT id, title, description, thumbnail, concat_ws(" ", title, description) as haystack
+      FROM posts
+      HAVING haystack like ?;
+      `;
+  db.execute(baseSQL, [q])
+    .then(function ([results, fields]) {
+      if (results.length > 0) {
+        res.locals.results = results;
+        res.locals.searchValue = originalSearchTerm;
+        req.flash("success", `${results.length} results found`);
+        req.session.save(function (saveError) {
+          res.render("index");
+        });
+      } else {
+        let baseSQL = `
+        SELECT id, title, description, thumbnail 
+        FROM posts ORDER BY createdAt DESC LIMIT 3;
+        `;
+        db.execute(baseSQL).then(function ([results, fields]) {
+          res.locals.results = results;
+          req.session.save(function (saveError) {
+            req.flash("error", `No results found`);
+            res.render("index");
+          });
+        });
+      }
+    })
+    .catch(function (err) {
+      next(err);
+    });
+});
 
 module.exports = router;

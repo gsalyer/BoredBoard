@@ -1,6 +1,6 @@
 <html>
   <body>
-    <h2>WELCOME >{{username}}</h2>
+    <h2>WELCOME {{#if isLoggedIn}}>{{username}}{{/if}}</h2>
     <main>
       <div id="main-searchbar">
         <form id="main-search-text"

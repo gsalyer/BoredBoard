@@ -1,5 +1,9 @@
-<div id="message-{{id}}" class="comment">
-  <strong>{{username}}</strong>
-  <p>{{text}}</p>
-  <div> {{formatDates createdAt}}</div>
-</div>
+<fieldset class="comment-text">
+  <legend>
+    <div id="message-{{id}}" class="comment">
+      <div class="comment-info username"><strong>>{{username}}</strong></div>
+      <div class="comment-info comment-date">{{formatDate createdAt}}</div>
+    </div>
+  </legend>
+  {{text}}
+</fieldset>

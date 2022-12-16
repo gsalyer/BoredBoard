@@ -13,7 +13,7 @@ module.exports = {
   getPostById: function (req, res, next) {
     let postId = req.params.id;
     let baseSQL = `
-        SELECT p.title, p.description, p.image, p.createdAt, u.username
+        SELECT p.id, p.title, p.description, p.image, p.createdAt, u.username
         FROM posts p
         JOIN users u
         ON fk_authorId=u.id
@@ -34,9 +34,9 @@ module.exports = {
         SELECT c.id, c.text, c.createdAt, u.username
         FROM comments c
         JOIN users u
-        on fk_authorId=u.id
+        ON fk_authorId=u.id
         WHERE fk_postId=?
-        order by c.createdAt desc;
+        ORDER BY c.createdAt ASC;
         `;
     db.execute(baseSQL, [postId])
       .then(function ([results, fields]) {

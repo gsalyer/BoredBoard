@@ -452,23 +452,32 @@ iframe {
   background-color: #dcd8c0;
 }
 
-/* text box padding */
-.text-input {
-  padding: 10px 0px 10px 0px;
+#post-img {
+  width: fit-content;
+  min-width: 450px;
+  max-width: 75%;
+  margin-left: calc(50% - 0.5 * var(--width));
 }
 
 /* stack post info horizontally */
-#post-info {
+#post-info,
+.comment {
   display: flex;
 }
 
-.post-info {
+.post-info,
+.comment-info {
   float: left;
 }
 
-#post-date {
+#post-date,
+.comment-date {
   opacity: 40%;
   padding-left: 10px;
+}
+
+.comment-text {
+  margin-bottom: 10px;
 }
 
 #main-searchbar {
@@ -496,6 +505,12 @@ iframe {
   margin-right: auto;
 }
 
-.wide{
+.wide {
   width: 100%;
+}
+
+.text-box {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
 }

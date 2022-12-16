@@ -2,26 +2,38 @@ const express = require("express");
 const router = express.Router();
 const db = require("../conf/database");
 
-router.post("/create", function (req, res, next) {
+// POST comment
+router.post("/", function (req, res, next) {
   if (!req.session.userId) {
     res.json({
       status: "error",
-      message: "You must be logged in to leave a comment",
+      message: "You must be logged in",
     });
   } else {
-    const commentText = req.body;
-    const userId = req.session.userId;
-    const postId = req.session.postId;
+    let { comment, postId } = req.body;
+    let { userId, username } = req.session;
     let baseSQL = `
-      INSERT INTO comments (text, fk_authorId)
-      VALUES (?, ?);
+      INSERT INTO comments (text, fk_authorId, fk_postId)
+      VALUE (?, ?, ?);
       `;
-    db.query(baseSQL, [commentText, userId])
-      .then(function ([results, fields]) {
-      if (results && results.affectedRows) {
-        req.flash("success", "Post created successfully.");
-        req.session.save(function (saveErr) {
-          res.redirect(`/posts/`);
+    db.execute(baseSQL, [comment, userId, postId]).then(function ([
+      results,
+      fields,
+    ]) {
+      if (results && results.affectedRows === 1) {
+        res.json({
+          status: "success",
+          message: "Comment created",
+          data: {
+            comment: comment,
+            username: username,
+            commentId: results.insertId,
+          },
+        });
+      } else {
+        res.json({
+          status: "error",
+          message: "Comment failed",
         });
       }
     });

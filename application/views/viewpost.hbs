@@ -3,48 +3,65 @@
     <main>
       <div id="post-container">
         <div id="post-content">
-          <h2>{{currentPost.title}}</h2>
-          <img src="/{{currentPost.image}}" alt="image not found :(" />
+          <figure id="post-img">
+            <figcaption>{{currentPost.title}}</figcaption>
+            <img src="/{{currentPost.image}}" alt="image not found :(" />
+          </figure>
           <div id="post-info">
             <div id="username" class="post-info">>{{currentPost.username}}</div>
             <div id="post-date" class="post-info">{{formatDate currentPost.createdAt}}</div>
-          </div> 
+          </div>
           <fieldset>
             {{currentPost.description}}
           </fieldset>
-          {{#if isLoggedIn}}
-            <form
-              id="post-comment"
-              action="/comments/create"
-              method="POST"
-              enctype="text/plain"
-            >
-              <div class="text-input">
-                <textarea
-                  name="comment"
-                  id="comment-input"
-                  cols="50"
-                  rows="7"
-                  placeholder="Leave a comment"
-                ></textarea>
-              </div>
-              <div id="submit-comment">
-                <button
-                  data-postid="{{currentPost.id}}"
-                  onclick="submit"
-                >Submit</button>
-              </div>
-            </form>
-          {{/if}}
         </div>
-        <div class="comment-section">
-          {{#each currentPost.comments}}
-            <div id="comment-list">
+      <div class="comment-section">
+        {{#if isLoggedIn}}
+          <div class="text-input-area">
+            <textarea
+              name="comment"
+              id="comment-text"
+              class="text-box"
+              cols="50"
+              rows="7"
+              placeholder="Leave a comment"
+            ></textarea>
+            <button
+              id="comment-button"
+              data-postid="{{currentPost.id}}"
+              onclick="submit"
+            >Submit</button>
+          </div>
+          {{/if}}
+          <h2>Comments</h2>
+          <div id="comment-list">
+            {{#each currentPost.comments}}
               {{> comment this}}
-            </div>
-          {{/each}}
+            {{/each}}
+          </div>
         </div>
       </div>
     </main>
   </body>
+  <script>
+    document.getElementById('comment-button') 
+      .addEventListener('click', function(ev){ 
+        let commentTextElement = document.getElementById('comment-text'); 
+        let commentText = commentTextElement.value;
+        console.log(commentText);
+        let postId = ev.currentTarget.dataset.postid;
+        fetch('/comments', { 
+          method: 'POST',
+          headers: {
+            "Content-Type": "Application/json" 
+              }, 
+              body: JSON.stringify({ 
+                comment: commentText, 
+                postId: postId 
+              }) 
+        })
+        .then(response => response.json())
+        .then(res_json => {
+          console.log(res_json); }) })
+  </script>
 </html>

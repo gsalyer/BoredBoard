@@ -470,7 +470,11 @@ iframe {
   padding-left: 10px;
 }
 
-#searchbar {
+#main-searchbar {
   width: 75%;
   margin-left: 12.5%;
+}
+
+#main-search-text{
+  width: 100%;
 }

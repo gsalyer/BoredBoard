@@ -20,6 +20,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
+// local:3000/posts/create
 router.post("/create", upload.single("uploadImage"), function (req, res, next) {
   if (req.file.path == undefined || req.file.filename == undefined) {
     req.flash("error", "Post could not be created");
@@ -68,5 +69,10 @@ router.post("/create", upload.single("uploadImage"), function (req, res, next) {
       });
   }
 });
+
+// local:3000/posts/search
+router.get("/search", function (req, res, next) {
+  
+})
 
 module.exports = router;

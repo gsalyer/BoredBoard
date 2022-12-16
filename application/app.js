@@ -31,7 +31,10 @@ app.engine(
         );
       },
       formatDate: function (dateString) {
-        return new Date(dateString).toLocaleString();
+        return new Date(dateString).toLocaleString("en-US", {
+          timeStyle: "long",
+          dateStyle: "long"
+        });
       }
     }, //adding new helpers to handlebars for extra functionality
   })

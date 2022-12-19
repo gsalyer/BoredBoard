@@ -16,27 +16,25 @@ router.post("/", function (req, res, next) {
       INSERT INTO comments (text, fk_authorId, fk_postId)
       VALUE (?, ?, ?);
       `;
-    db.execute(baseSQL, [comment, userId, postId]).then(function ([
-      results,
-      fields,
-    ]) {
-      if (results && results.affectedRows === 1) {
-        res.json({
-          status: "success",
-          message: "Comment created",
-          data: {
-            comment: comment,
-            username: username,
-            commentId: results.insertId,
-          },
-        });
-      } else {
-        res.json({
-          status: "error",
-          message: "Comment failed",
-        });
-      }
-    });
+    db.execute(baseSQL, [comment, userId, postId])
+      .then(function ([results, fields]) {
+        if (results && results.affectedRows === 1) {
+          res.json({
+            status: "success",
+            message: "Comment created",
+            data: {
+              comment: comment,
+              username: username,
+              commentId: results.insertId,
+            },
+          });
+        } else {
+          res.json({
+            status: "error",
+            message: "Comment failed",
+          });
+        }
+      });
   }
 });
 

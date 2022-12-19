@@ -13,23 +13,29 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/index", getRecentPosts, function (req, res) {
-  res.render("index"); //, { js: ["fetch.js"] }
+  res.render("index", { title: "CSC 317 App", name: "Garrett Salyer" }); //, { js: ["fetch.js"] }
 });
 
 router.get("/login", function (req, res) {
-  res.render("login");
+  res.render("login", { title: "CSC 317 App", name: "Garrett Salyer" });
 });
 
 router.get("/register", function (req, res) {
-  res.render("registration" /*{ js: ["validation.js"] }*/);
+  res.render(
+    "registration",
+    {
+      title: "CSC 317 App",
+      name: "Garrett Salyer",
+    } /*{ js: ["validation.js"] }*/
+  );
 });
 
 router.get("/postimage", isLoggedIn, function (req, res) {
-  res.render("postimage");
+  res.render("postimage", { title: "CSC 317 App", name: "Garrett Salyer" });
 });
 
 router.get("/posts/:id(\\d+)", getPostById, getCommentsForPostsById, function (req, res) {
-  res.render("viewpost");
+  res.render("viewpost", { title: "CSC 317 App", name: "Garrett Salyer" });
   }
 );
 

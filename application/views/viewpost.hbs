@@ -50,6 +50,7 @@
         let commentText = commentTextElement.value;
         console.log(commentText);
         let postId = ev.currentTarget.dataset.postid;
+        commentTextElement.value = '';
         fetch('/comments', { 
           method: 'POST',
           headers: {
@@ -62,6 +63,8 @@
         })
         .then(response => response.json())
         .then(res_json => {
-          console.log(res_json); }) })
+          console.log(res_json); 
+          });
+        });
   </script>
 </html>

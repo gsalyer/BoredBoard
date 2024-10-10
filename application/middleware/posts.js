@@ -3,7 +3,7 @@ module.exports = {
   getRecentPosts: function (req, res, next) {
     db.query("SELECT id, title, description, thumbnail FROM posts LIMIT 32")
       .then(function ([results, fields]) {
-        if (results && results.length) {
+        if (results?.length) {
           res.locals.results = results;
         }
         next();

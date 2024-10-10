@@ -1,5 +1,5 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 const bcrypt = require("bcrypt");
 const UserError = require("../helpers/error/UserError");
 const db = require("../conf/database");

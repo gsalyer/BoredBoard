@@ -44,7 +44,7 @@ app.engine(
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 
-var sessionStore = new MySQLStore({}, require("./conf/database"));
+const sessionStore = new MySQLStore({}, require("./conf/database"));
 // session
 app.use(
   session({
@@ -93,7 +93,7 @@ app.use((req, res, next) => {
  * Error Handler, used to render the error html file
  * with relevant error information.
  */
-app.use(function (err, req, res, next) {
+app.use(function (err, res) {
   res.locals.message = err.message;
   res.locals.error = err;
   console.log(err);

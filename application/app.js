@@ -33,11 +33,11 @@ app.engine(
       formatDate: function (dateString) {
         return new Date(dateString).toLocaleString("en-US", {
           timeStyle: "long",
-          dateStyle: "long"
+          dateStyle: "long",
         });
-      }
+      },
     }, //adding new helpers to handlebars for extra functionality
-  })
+  }),
 );
 
 // view engine setup
@@ -53,7 +53,7 @@ app.use(
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
-  })
+  }),
 );
 
 app.use(logger("dev"));
@@ -85,7 +85,7 @@ app.use("/comments", commentsRouter);
  */
 app.use((req, res, next) => {
   next(
-    createError(404, `The route ${req.method} : ${req.url} does not exist.`)
+    createError(404, `The route ${req.method} : ${req.url} does not exist.`),
   );
 });
 

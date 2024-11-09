@@ -367,7 +367,10 @@ iframe {
 }
 
 #nav-menu .nav-button.on {
-  transition: background 0.2s, color 0.2s, height 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    height 0.2s;
   background: #5f5a4a;
   color: #d1cbb3;
   height: 70px;
@@ -377,19 +380,24 @@ iframe {
 }
 
 #nav-menu .nav-button:hover {
-  transition: background 0.2s, color 0.2s, height 0.2s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    height 0.2s,
+    box-shadow 0.2s;
   background: #5f5a4a;
   color: #d1cbb3;
   box-shadow: 0px 0px 6px #5f5a4a;
 }
 
+/* Display background image centered on nav button text */
 #nav-menu .nav-button.on::before {
   content: "";
+  background: url("https://i.imgur.com/lsEiej1.png");
   position: absolute;
   left: -45px;
   height: 29px;
   width: 42px;
-  background: url("https://i.imgur.com/lsEiej1.png");
   top: 17.5px;
 }
 

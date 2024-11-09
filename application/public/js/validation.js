@@ -19,7 +19,7 @@
  * each time the user types a value into the text field
  */
 
-var validUser = false;
+let validUser = false;
 document.getElementById("username").addEventListener("input", function (ev) {
   let usernameElement = ev.target; //element that triggered the event
   let username = usernameElement.value; //text value of the element field
@@ -37,14 +37,14 @@ document.getElementById("username").addEventListener("input", function (ev) {
 });
 
 //add an event listener to the password input field.
-var validPassword = false;
+let validPassword = false;
 document.getElementById("password").addEventListener("input", function (ev) {
   let passwordElement = ev.target;
   let password = passwordElement.value;
   if (
     password.length >= 8 &&
     password.match(
-      /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[-\/*+!@#$^&~[\]]).{8,}/
+      /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?=.*?[-/*+!@#$^&~[\]]).{8,}/
     )
   ) {
     passwordElement.classList.add("valid-text");
@@ -60,7 +60,7 @@ document.getElementById("password").addEventListener("input", function (ev) {
 });
 
 //confirm password
-var validConfirm = false;
+let validConfirm = false;
 document
   .getElementById("confirmpassword")
   .addEventListener("input", function (ev) {
@@ -81,7 +81,7 @@ document
   });
 
 //add event listener to over13 and tos checkboxes
-var validOver13 = false;
+let validOver13 = false;
 document.getElementById("over13").addEventListener("change", function (ev) {
   let over13Element = ev.target;
   if (over13Element.checked) {
@@ -93,7 +93,7 @@ document.getElementById("over13").addEventListener("change", function (ev) {
   }
 });
 
-var validTOS = false;
+let validTOS = false;
 document.getElementById("tos").addEventListener("change", function (ev) {
   let tosElement = ev.target;
   if (tosElement.checked) {

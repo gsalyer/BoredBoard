@@ -13,14 +13,14 @@ router.post("/register", function (req, res, next) {
 
   //check for duplicates
   db.query("select id from users where username=?", [username])
-    .then(function ([results, fields]) {
+    .then(function ([results]) {
       if (results && results.length == 0) {
         return db.query("select id from users where email=?", [email]);
       } else {
         throw new UserError("Username already exists.", "/register", 200);
       }
     })
-    .then(function ([results, fields]) {
+    .then(function ([results]) {
       if (results && results.length == 0) {
         return bcrypt.hash(password, 2);
       } else {
@@ -33,7 +33,7 @@ router.post("/register", function (req, res, next) {
         [username, email, hashedPassword]
       );
     })
-    .then(function ([results, fields]) {
+    .then(function ([results]) {
       if (results && results.affectedRows == 1) {
         res.redirect("/login");
       } else {
@@ -43,7 +43,7 @@ router.post("/register", function (req, res, next) {
     .catch(function (err) {
       if (err instanceof UserError) {
         req.flash("error", err.getMessage());
-        req.session.save(function (saveError) {
+        req.session.save(function () {
           res.redirect(err.getRedirectURL());
         });
       } else {
@@ -63,7 +63,7 @@ router.post("/login", function (req, res, next) {
   db.query("select id, username, password from users where username=?", [
     username,
   ])
-    .then(function ([results, fields]) {
+    .then(function ([results]) {
       if (results && results.length == 1) {
         loggedUserId = results[0].id;
         loggedUsername = results[0].username;
@@ -78,7 +78,7 @@ router.post("/login", function (req, res, next) {
         req.session.userId = loggedUserId;
         req.session.username = loggedUsername;
         req.flash("success", `${loggedUsername}, you are now logged in.`);
-        req.session.save(function (saveError) {
+        req.session.save(function () {
           res.redirect("/");
         });
       } else {
@@ -88,7 +88,7 @@ router.post("/login", function (req, res, next) {
     .catch(function (err) {
       if (err instanceof UserError) {
         req.flash("error", err.getMessage());
-        req.session.save(function (saveError) {
+        req.session.save(function () {
           res.redirect(err.getRedirectURL());
         });
       } else {
@@ -99,8 +99,8 @@ router.post("/login", function (req, res, next) {
 
 //localhost:3000/users/logout
 router.post("/logout", function (req, res, next) {
-  req.session.destroy(function (destroyError) {
-    if (destroyError) {
+  req.session.destroy(function (err) {
+    if (err) {
       next(err);
     } else {
       res.json({

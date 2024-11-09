@@ -5,11 +5,11 @@ const db = require("../conf/database");
 const sharp = require("sharp");
 
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
+  destination(req, file, cb) {
     cb(null, "public/images/uploads");
   },
-  filename: function (req, file, cb) {
-    let fileExt = file.mimetype.split("/")[1];
+  filename(req, file, cb) {
+    const fileExt = file.mimetype.split("/")[1];
     cb(
       null,
       `${file.fieldname}-${Date.now()}-${Math.round(
@@ -18,29 +18,32 @@ const storage = multer.diskStorage({
     );
   },
 });
-const upload = multer({ storage: storage });
+const upload = multer({ storage });
 
 // local:3000/posts/create
-router.post("/create", upload.single("uploadImage"), function (req, res, next) {
-  if (req.file.path == undefined || req.file.filename == undefined) {
+router.post("/create", upload.single("uploadImage"), (req, res, next) => {
+  if (req.file.path === undefined || req.file.filename === undefined) {
     req.flash("error", "Post could not be created");
-    req.session.save(function (saveError) {
+    req.session.save((err) => {
+      if (err) {
+        next(err);
+      }
       res.redirect("posts");
     });
   } else {
-    let uploadedFile = req.file.path;
-    let thumbnailName = "thumbnail-" + req.file.filename;
-    let thumbnailPath = req.file.destination + "/" + thumbnailName;
+    const uploadedFile = req.file.path;
+    const thumbnailName = `thumbnail-${req.file.filename}`;
+    const thumbnailPath = `${req.file.destination}/${thumbnailName}`;
 
     const { title, description } = req.body;
     const userId = req.session.userId;
     sharp(uploadedFile)
       .resize(300, 300, {
-        fit: 'inside'
+        fit: "inside",
       })
       .toFile(thumbnailPath)
-      .then(function () {
-        let baseSQL = `
+      .then(() => {
+        const baseSQL = `
             INSERT INTO posts (title, description, image, thumbnail, fk_authorId) 
             VALUE (?, ?, ?, ?, ?);
             `;
@@ -52,58 +55,73 @@ router.post("/create", upload.single("uploadImage"), function (req, res, next) {
           userId,
         ]);
       })
-      .then(function ([results, fields]) {
-        if (results && results.affectedRows == 1) {
+      .then(([results]) => {
+        if (results && results.affectedRows === 1) {
           req.flash("success", "Post created successfully");
-          req.session.save(function (saveError) {
+          req.session.save((err) => {
+            if (err) {
+              next(err);
+            }
             res.redirect("/index");
           });
         } else {
           req.flash("error", "Post could not be created");
-          req.session.save(function (saveError) {
+          req.session.save((err) => {
+            if (err) {
+              next(err);
+            }
             res.redirect("/");
           });
         }
       })
-      .catch(function (err) {
+      .catch((err) => {
         next(err);
       });
   }
 });
 
-// local:3000/posts/search
-router.get("/search", function (req, res, next) {
-  let q = `%${req.query.q}%`;
-  let originalSearchTerm = req.query.q;
-  let baseSQL = `
+router.get("/search", (req, res, next) => {
+  if (!req.query.q || req.query.q.trim() === "") {
+    req.flash("error", "Search term cannot be empty");
+    return res.redirect("/");
+  }
+  const query = `%${req.query.q}%`;
+  const originalSearchTerm = req.query.q;
+  const baseSQL = `
       SELECT id, title, description, thumbnail, concat_ws(" ", title, description) as haystack
       FROM posts
       HAVING haystack like ?;
       `;
-  db.execute(baseSQL, [q])
-    .then(function ([results, fields]) {
+  db.execute(baseSQL, [query])
+    .then(([results]) => {
       if (results.length > 0) {
         res.locals.results = results;
         res.locals.searchValue = originalSearchTerm;
         req.flash("success", `${results.length} results found`);
-        req.session.save(function (saveError) {
+        req.session.save((err) => {
+          if (err) {
+            next(err);
+          }
           res.render("index");
         });
       } else {
-        let baseSQL = `
+        const baseSQL = `
         SELECT id, title, description, thumbnail 
         FROM posts ORDER BY createdAt DESC LIMIT 3;
         `;
-        db.execute(baseSQL).then(function ([results, fields]) {
+        db.execute(baseSQL).then(([results]) => {
           res.locals.results = results;
-          req.session.save(function (saveError) {
-            req.flash("error", `No results found`);
+          req.session.save((err) => {
+            if (err) {
+              next(err);
+            }
+            req.flash("error", "No results found");
             res.render("index");
           });
         });
       }
     })
-    .catch(function (err) {
+    .catch((err) => {
       next(err);
     });
 });

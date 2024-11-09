@@ -1,3 +1,5 @@
+// https://jsonplaceholder.org/
+
 /**
  * Build a card div using a template literal
  * string (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
@@ -6,25 +8,24 @@
  */
 function buildCardsUsingStrings(data) {
   return `<span class="img-card">
-                <img class="img-thumb" src="${data.thumbnailUrl}" alt="Fake photo for id: ${data.id}" />
+                <img class="img-thumb" src="${data.thumbnail}" alt="Fake photo for id: ${data.id}" />
                 <div class="img-info">
                     <p class="img-title">${data.title}</p>
                 </div>
             </span>`;
 }
-var imgCount = 0;
+let imgCount = 0;
 function fetchImgs() {
-  var url = "https://jsonplaceholder.typicode.com/albums/2/photos";
+  const url = "https://jsonplaceholder.org/posts";
   fetch(url)
     .then((response) => {
       //extract the body from response object.
       return response.json();
     })
     .then((data) => {
-      htmlString = "";
+      let htmlString = "";
       data.forEach((element) => {
         //for each img , build a card HTML element using strings
-        console.log(buildCardsUsingStrings(element));
         htmlString += buildCardsUsingStrings(element);
         imgCount++;
       });

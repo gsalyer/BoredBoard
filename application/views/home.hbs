@@ -3,13 +3,19 @@
     <h2>WELCOME {{#if isLoggedIn}}>{{username}}{{/if}}</h2>
     <main>
       <div id="main-searchbar">
-        <form id="main-search-text"
+        <form
+          id="main-search-text"
           class="search-text"
           method="GET"
           action="/posts/search"
           enctype="application/x-www-form-urlencoded"
         >
-          <input type="text" class="search-text" name="q" value="{{searchValue}}"/>
+          <input
+            type="text"
+            class="search-text"
+            name="q"
+            value="{{searchValue}}"
+          />
           <button class="submit-button center" type="submit">Search</button>
         </form>
       </div>

@@ -87,22 +87,22 @@ router.get("/search", (req, res, next) => {
   }
   const query = `%${req.query.q}%`;
   const originalSearchTerm = req.query.q;
-  const baseSQL = `
+  const queryBaseSQL = `
       SELECT id, title, description, thumbnail, concat_ws(" ", title, description) as haystack
       FROM posts
       HAVING haystack like ?;
       `;
-  db.execute(baseSQL, [query])
-    .then(([results]) => {
-      if (results.length > 0) {
-        res.locals.results = results;
+  db.execute(queryBaseSQL, [query])
+    .then(([queryResults]) => {
+      if (queryResults.length > 0) {
+        res.locals.results = queryResults;
         res.locals.searchValue = originalSearchTerm;
-        req.flash("success", `${results.length} results found`);
+        req.flash("success", `${queryResults.length} results found`);
         req.session.save((err) => {
           if (err) {
             next(err);
           }
-          res.render("index");
+          return res.render("index");
         });
       } else {
         const baseSQL = `
@@ -116,7 +116,7 @@ router.get("/search", (req, res, next) => {
               next(err);
             }
             req.flash("error", "No results found");
-            res.render("index");
+            return res.render("index");
           });
         });
       }
@@ -124,6 +124,7 @@ router.get("/search", (req, res, next) => {
     .catch((err) => {
       next(err);
     });
+  return null;
 });
 
 module.exports = router;
